@@ -1,56 +1,73 @@
 /* this file is loaded by index.html and styles the page */
 
 * {
-  box-sizing: border-box;
+	text-align: center;
 }
 
 body {
-  font-family: sans-serif;
-  margin: 2em 1em;
-  line-height: 1.5em;
+	display: grid;
+	grid-template-columns: auto;
 }
 
-h1 {
-  font-style: italic;
-  color: #373fff;
-  max-width: calc(100% - 5rem);
-  line-height: 1.1;
+.heading {
+	font-family: Arial;
+	margin-top: 40vh;
 }
 
-form {
-  background-color: #eee;
-  display: grid;
-  grid-gap: 1em;
-  padding: 1em;
-  max-width: 40ch;
+.URL-input,
+.convert-button {
+	font-size: 1.3em;
+	padding: 5px 10px;
 }
 
-input {
-  border: 1px solid silver;
-  display: block;
-  font-size: 16px;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
+.URL-input {
+	margin: auto;
+	border-radius: 4px 0px 0px 4px;
+	width: 30em;
+	text-align: left;
+	border: 2px solid #eeeeee;
+	background: #eeeeee;
+	outline: none;
 }
 
-form button {
-  background-color: #bbbbf2;
-  border: 2px solid currentColor;
-  border-radius: .25em;
-  cursor: pointer;
-  font-size: inherit;
-  line-height: 1.4em;
-  padding: 0.25em 1em;
-  max-width: 20ch;
+.URL-input:focus {
+	border: 2px solid #0485ff;
 }
 
-form button:hover {
-  background-color: lavender;
+.convert-button {
+	margin: 2% auto;
+	border: 2px solid #0485ff;
+	background: #0485ff;
+	color: white;
+	transition: 0.15s;
 }
 
-footer {
-  margin-top: 3em;
-  padding-top: 1.5em;
-  border-top: 1px solid lightgrey;
+.convert-button:hover {
+	background: #016acc;
+	border-color: #016acc;
+}
+
+@media only screen and (max-width: 600px) {
+	body {
+		display: grid;
+		grid-template-columns: auto;
+		justify-content: center;
+	}
+
+	.URL-input {
+		margin: auto;
+		width: 100%;
+	}
+
+	.convert-button {
+		margin: 7% auto;
+		width: 100%;
+	}
+}
+
+.opt {
+	width: 30vw;
+	margin: 2% auto;
+	padding: 4px;
+	border-radius: 7%;
 }

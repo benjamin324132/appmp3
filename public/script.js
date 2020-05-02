@@ -1,41 +1,24 @@
-// client-side js, loaded by index.html
-// run by the browser each time the page is loaded
+let Btn = document.getElementById('btn');
+let URLinput = document.querySelector('.URL-input');
+let select = document.querySelector('.opt');
+let serverURL = 'https://husky-curvy-dumpling.glitch.me';
 
-console.log("hello world :o");
+Btn.addEventListener('click', () => {
+	if (!URLinput.value) {
+		alert('Enter YouTube URL');
+	} else {
+		if (select.value == 'mp3') {
+			redirectMp3(URLinput.value);
+		} else if (select.value == 'mp4') {
+			redirectMp4(URLinput.value);
+		}
+	}
+});
 
-// define variables that reference elements on our page
-const dreamsList = document.getElementById("dreams");
-const dreamsForm = document.querySelector("form");
-
-// a helper function that creates a list item for a given dream
-function appendNewDream(dream) {
-  const newListItem = document.createElement("li");
-  newListItem.innerText = dream;
-  dreamsList.appendChild(newListItem);
+function redirectMp3(query) {
+	window.location.href = `${serverURL}/downloadmp3?url=${query}`;
 }
 
-// fetch the initial list of dreams
-fetch("/dreams")
-  .then(response => response.json()) // parse the JSON from the server
-  .then(dreams => {
-    // remove the loading text
-    dreamsList.firstElementChild.remove();
-  
-    // iterate through every dream and add it to our page
-    dreams.forEach(appendNewDream);
-  
-    // listen for the form to be submitted and add a new dream when it is
-    dreamsForm.addEventListener("submit", event => {
-      // stop our form submission from refreshing the page
-      event.preventDefault();
-
-      // get dream value and add it to the list
-      let newDream = dreamsForm.elements.dream.value;
-      dreams.push(newDream);
-      appendNewDream(newDream);
-
-      // reset form
-      dreamsForm.reset();
-      dreamsForm.elements.dream.focus();
-    });
-  });
+function redirectMp4(query) {
+	window.location.href = `${serverURL}/downloadmp4?url=${query}`;
+}
