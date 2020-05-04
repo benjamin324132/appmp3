@@ -11,12 +11,7 @@ const app = express();
 
 app.use(cors());
 
-// our default array of dreams
-const dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
+
 
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
@@ -48,25 +43,7 @@ app.get('/downloadmp3', async (req, res, next) => {
 	}
 });
 
-app.get('/downloadmp4', async (req, res, next) => {
-	try {
-		let URL = req.query.url;
-		let title = 'video';
 
-		await ytdl.getBasicInfo(URL, {
-			format: 'mp4'
-		}, (err, info) => {
-			title = info.player_response.videoDetails.title;
-		});
-
-		res.header('Content-Disposition', `attachment; filename="${title}.mp4"`);
-		ytdl(URL, {
-			format: 'mp4',
-		}).pipe(res);
-	} catch (err) {
-		console.error(err);
-	}
-});
 
 // listen for requests :)
 app.listen(4000, () => {
