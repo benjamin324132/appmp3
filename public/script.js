@@ -1,6 +1,6 @@
 let Btn = document.getElementById('btn');
 let URLinput = document.querySelector('.URL-input');
-let serverURL = 'https://husky-curvy-dumpling.glitch.me';
+let serverURL = 'https://mp3-api.glitch.me';
 
 Btn.addEventListener('click', () => {
 	if (!URLinput.value) {
